@@ -10,15 +10,15 @@ FROM employees
 WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
 
 -- List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
-SELECT d.dept_no, d.dept_name, de.emp_no, e.last_name, e.first_name
+SELECT d.dept_no, d.dept_name, dm.emp_no, e.last_name, e.first_name
 FROM departments d
-JOIN dept_emp de
-ON (d.dept_no = de.dept_no)
+JOIN dept_manager dm
+ON (d.dept_no = dm.dept_no)
 JOIN employees e
-ON (de.emp_no = e.emp_no);
+ON (dm.emp_no = e.emp_no);
 
 -- List the department of each employee with the following information: employee number, last name, first name, and department name.
-SELECT d.dept_name, de.emp_no, e.last_name, e.first_name, d.dept_name
+SELECT de.emp_no, e.last_name, e.first_name, d.dept_name
 FROM departments d
 JOIN dept_emp de
 ON (d.dept_no = de.dept_no)
@@ -31,7 +31,7 @@ FROM employees
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 -- List all employees in the Sales department, including their employee number, last name, first name, and department name.
-SELECT e.emp_no, e.last_name, e.first_name
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees e
 JOIN dept_emp de
 ON (e.emp_no = de.emp_no)
