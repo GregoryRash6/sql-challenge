@@ -1,4 +1,5 @@
 -- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/frTomm
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
@@ -23,11 +24,11 @@ CREATE TABLE "dept_manager" (
 CREATE TABLE "employees" (
     "emp_no" INT   NOT NULL,
     "emp_title_id" VARCHAR   NOT NULL,
-    "birth_date" VARCHAR   NOT NULL,
+    "birth_date" DATE   NOT NULL,
     "first_name" VARCHAR   NOT NULL,
     "last_name" VARCHAR   NOT NULL,
     "sex" VARCHAR   NOT NULL,
-    "hire_date" VARCHAR   NOT NULL,
+    "hire_date" DATE   NOT NULL,
     CONSTRAINT "pk_employees" PRIMARY KEY (
         "emp_no"
      )
@@ -63,4 +64,6 @@ REFERENCES "titles" ("title_id");
 
 ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no");
+
+
 
